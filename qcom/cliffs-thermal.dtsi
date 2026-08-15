@@ -982,6 +982,13 @@
 		};
 	};
 
+	/* dethrottle: gpu*_tj_cfg passive trip raised 95C -> 100C on gpuss-0..3
+	 * below, keeping a 15C buffer to reset-mon-cfg (115C). This binds
+	 * straight to msm_gpu's cooling device and throttled independent of
+	 * the devfreq governor. reset-mon-cfg is itself still a passive
+	 * software mitigation, not the real hardware cutoff — that lives in
+	 * TSENS's fused "critical" IRQ (line ~15/26/37), which this file has
+	 * no visibility into and was left untouched. */
 	gpuss-0 {
 		polling-delay-passive = <10>;
 		polling-delay = <0>;
@@ -1000,7 +1007,7 @@
 			};
 
 			gpu0_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <100000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1038,7 +1045,7 @@
 			};
 
 			gpu1_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <100000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1076,7 +1083,7 @@
 			};
 
 			gpu2_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <100000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1114,7 +1121,7 @@
 			};
 
 			gpu3_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <100000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
