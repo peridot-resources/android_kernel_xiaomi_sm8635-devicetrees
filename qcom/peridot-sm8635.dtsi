@@ -677,13 +677,13 @@
 };
 
 &usb_qmp_dp_phy {
-	status = "disabled";
+	status = "okay";
 };
 
 &usb0 {
 	dwc3@a600000 {
-		usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
-		maximum-speed = "high-speed";
+		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+		maximum-speed = "super-speed";
  	};
 };
 
